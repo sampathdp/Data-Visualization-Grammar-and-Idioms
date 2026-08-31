@@ -80,12 +80,12 @@ st.markdown("""
     }
 
     /* 2x2 Grid Container Boxes */
-    .viz-box {
-        background: #FFFFFF;
-        border: 1.5px solid #CBD5E1;
-        border-radius: 4px;
-        padding: 6px 10px;
-        margin-bottom: 6px;
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: #FFFFFF !important;
+        border-color: #CBD5E1 !important;
+        border-radius: 6px !important;
+        padding: 6px 10px !important;
+        margin-bottom: 6px !important;
     }
 
     .viz-label {
@@ -123,10 +123,11 @@ with col_title:
     """, unsafe_allow_html=True)
 
 with col_switch:
-    selected_dashboard = st.segmented_control(
+    selected_dashboard = st.radio(
         "Select Active Dashboard View:",
-        options=[" 1. Exploratory Explorer", " 2. Explanatory Story"],
-        default=" 1. Exploratory Explorer",
+        options=["📊 1. Exploratory Explorer", "📖 2. Explanatory Story"],
+        index=0,
+        horizontal=True,
         label_visibility="collapsed"
     )
 
@@ -194,30 +195,30 @@ if selected_dashboard is None or "1. Exploratory" in str(selected_dashboard):
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown('<div class="viz-box"><div class="viz-label">1. Temporal Trajectory: Releases by Genre</div>', unsafe_allow_html=True)
-        fig_time = render_market_timeline_compact(df_exp_filtered, selected_genres if selected_genres else available_genres[:5])
-        st.plotly_chart(fig_time, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown('<div class="viz-label">1. Temporal Trajectory: Releases by Genre</div>', unsafe_allow_html=True)
+            fig_time = render_market_timeline_compact(df_exp_filtered, selected_genres if selected_genres else available_genres[:5])
+            st.plotly_chart(fig_time, use_container_width=True)
 
     with col2:
-        st.markdown('<div class="viz-box"><div class="viz-label">2. Commercial Matrix: Pricing vs. Positivity %</div>', unsafe_allow_html=True)
-        fig_scatter = render_opportunity_scatter_compact(df_filtered)
-        st.plotly_chart(fig_scatter, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown('<div class="viz-label">2. Commercial Matrix: Pricing vs. Positivity %</div>', unsafe_allow_html=True)
+            fig_scatter = render_opportunity_scatter_compact(df_filtered)
+            st.plotly_chart(fig_scatter, use_container_width=True)
 
     col3, col4 = st.columns(2)
     with col3:
-        st.markdown('<div class="viz-box"><div class="viz-label">3. Cross-Tab Heatmap: Year × Genre Positivity %</div>', unsafe_allow_html=True)
-        fig_heat = render_genre_year_heatmap_compact(df_exp_filtered, selected_genres if selected_genres else available_genres[:6], min_year=selected_years[0])
-        st.plotly_chart(fig_heat, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown('<div class="viz-label">3. Cross-Tab Heatmap: Year × Genre Positivity %</div>', unsafe_allow_html=True)
+            fig_heat = render_genre_year_heatmap_compact(df_exp_filtered, selected_genres if selected_genres else available_genres[:6], min_year=selected_years[0])
+            st.plotly_chart(fig_heat, use_container_width=True)
 
     with col4:
-        st.markdown('<div class="viz-box"><div class="viz-label">4. Network Structure: Publisher → Genre → Platform</div>', unsafe_allow_html=True)
-        fig_sankey = render_publisher_genre_platform_sankey_compact(df_filtered, max_publishers=6)
-        if fig_sankey:
-            st.plotly_chart(fig_sankey, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown('<div class="viz-label">4. Network Structure: Publisher → Genre → Platform</div>', unsafe_allow_html=True)
+            fig_sankey = render_publisher_genre_platform_sankey_compact(df_filtered, max_publishers=6)
+            if fig_sankey:
+                st.plotly_chart(fig_sankey, use_container_width=True)
 
 # =========================================================================
 #  DASHBOARD 2: EXPLANATORY MARKET EVOLUTION STORY
@@ -225,42 +226,39 @@ if selected_dashboard is None or "1. Exploratory" in str(selected_dashboard):
 else:
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""
-        <div class="viz-box">
-            <div class="viz-label">1. Platform Deregulation Caused an Exponential Supply Surge</div>
-            <div class="viz-sub"><b>Temporal Insight:</b> 2012 Greenlight & 2017 Direct expanded catalog from 500 to 8,000+ games/yr.</div>
-        """, unsafe_allow_html=True)
-        fig1 = render_story_stage_1(df_filtered)
-        st.plotly_chart(fig1, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("""
+                <div class="viz-label">1. Platform Deregulation Caused an Exponential Supply Surge</div>
+                <div class="viz-sub"><b>Temporal Insight:</b> 2012 Greenlight & 2017 Direct expanded catalog from 500 to 8,000+ games/yr.</div>
+            """, unsafe_allow_html=True)
+            fig1 = render_story_stage_1(df_filtered)
+            st.plotly_chart(fig1, use_container_width=True)
 
     with col2:
-        st.markdown("""
-        <div class="viz-box">
-            <div class="viz-label">2. Market Share Treemap (Area = Titles N, Color = Positivity %)</div>
-            <div class="viz-sub"><b>Categorical Insight:</b> Indie & Action dominate volume; RPG & Simulation achieve peak satisfaction.</div>
-        """, unsafe_allow_html=True)
-        fig2 = render_story_stage_2_treemap(df_exp_filtered)
-        st.plotly_chart(fig2, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("""
+                <div class="viz-label">2. Market Share Treemap (Area = Titles N, Color = Positivity %)</div>
+                <div class="viz-sub"><b>Categorical Insight:</b> Indie & Action dominate volume; RPG & Simulation achieve peak satisfaction.</div>
+            """, unsafe_allow_html=True)
+            fig2 = render_story_stage_2_treemap(df_exp_filtered)
+            st.plotly_chart(fig2, use_container_width=True)
 
     col3, col4 = st.columns(2)
     with col3:
-        st.markdown("""
-        <div class="viz-box">
-            <div class="viz-label">3. The Small-Sample Illusion (100% Rating Trap)</div>
-            <div class="viz-sub"><b>Statistical Insight:</b> 100% positivity with N ≤ 5 reviews is high risk; always enforce N ≥ 100 evidence floor.</div>
-        """, unsafe_allow_html=True)
-        fig3 = render_story_stage_4(df_filtered)
-        st.plotly_chart(fig3, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("""
+                <div class="viz-label">3. The Small-Sample Illusion (100% Rating Trap)</div>
+                <div class="viz-sub"><b>Statistical Insight:</b> 100% positivity with N ≤ 5 reviews is high risk; always enforce N ≥ 100 evidence floor.</div>
+            """, unsafe_allow_html=True)
+            fig3 = render_story_stage_4(df_filtered)
+            st.plotly_chart(fig3, use_container_width=True)
 
     with col4:
-        st.markdown("""
-        <div class="viz-box">
-            <div class="viz-label">4. Global Game Development & Studio Production Map</div>
-            <div class="viz-sub"><b>Geospatial Insight:</b> North America, Western Europe, and East Asia form dominant production epicenters.</div>
-        """, unsafe_allow_html=True)
-        fig4 = render_story_stage_geospatial_map(df_filtered)
-        st.plotly_chart(fig4, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("""
+                <div class="viz-label">4. Global Game Development & Studio Production Map</div>
+                <div class="viz-sub"><b>Geospatial Insight:</b> North America, Western Europe, and East Asia form dominant production epicenters.</div>
+            """, unsafe_allow_html=True)
+            fig4 = render_story_stage_geospatial_map(df_filtered)
+            st.plotly_chart(fig4, use_container_width=True)
+
