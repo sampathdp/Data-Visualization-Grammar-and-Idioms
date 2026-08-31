@@ -61,6 +61,11 @@ st.markdown("""
         color: #0F172A;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
+
+    /* Enforce Dark High-Contrast Text for all Labels & Paragraphs */
+    .stApp p, .stApp label, .stApp span, [data-testid="stWidgetLabel"] p {
+        color: #0F172A !important;
+    }
     
     /* Top Header Bar Container */
     .top-header-container {
@@ -75,8 +80,32 @@ st.markdown("""
     .app-title-text {
         font-size: 1.15rem;
         font-weight: 800;
-        color: #0F172A;
+        color: #0F172A !important;
         letter-spacing: -0.01em;
+    }
+
+    /* Radio Switcher Custom High-Contrast Styling */
+    div[data-testid="stRadio"] div[role="radiogroup"] {
+        background-color: #FFFFFF !important;
+        border: 1.5px solid #CBD5E1 !important;
+        border-radius: 8px !important;
+        padding: 4px 10px !important;
+        gap: 1.2rem !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    div[data-testid="stRadio"] label {
+        margin: 0 !important;
+        cursor: pointer !important;
+    }
+
+    div[data-testid="stRadio"] label p, 
+    div[data-testid="stRadio"] label span,
+    div[data-testid="stRadio"] label div {
+        color: #0F172A !important;
+        font-weight: 700 !important;
+        font-size: 0.92rem !important;
     }
 
     /* 2x2 Grid Container Boxes */
@@ -91,7 +120,7 @@ st.markdown("""
     .viz-label {
         font-size: 0.8rem;
         font-weight: 700;
-        color: #0F172A;
+        color: #0F172A !important;
         text-transform: uppercase;
         letter-spacing: 0.03em;
         margin-bottom: 2px;
@@ -101,7 +130,7 @@ st.markdown("""
     
     .viz-sub {
         font-size: 0.72rem;
-        color: #475569;
+        color: #334155 !important;
         margin-bottom: 4px;
     }
 </style>
