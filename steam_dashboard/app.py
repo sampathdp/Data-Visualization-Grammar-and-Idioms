@@ -62,9 +62,49 @@ st.markdown("""
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    /* Enforce Dark High-Contrast Text for all Labels & Paragraphs */
-    .stApp p, .stApp label, .stApp span, [data-testid="stWidgetLabel"] p {
+    /* Main App Light Theme Text */
+    section.main p, 
+    section.main label, 
+    section.main span, 
+    section.main [data-testid="stWidgetLabel"] p {
         color: #0F172A !important;
+    }
+
+    /* Sidebar High-Contrast Text & Controls */
+    section[data-testid="stSidebar"] {
+        background-color: #1E293B !important;
+    }
+    
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] h4 {
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+    }
+
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] label p,
+    section[data-testid="stSidebar"] label span,
+    section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+    section[data-testid="stSidebar"] .stMarkdown p {
+        color: #E2E8F0 !important;
+        font-weight: 600 !important;
+        font-size: 0.88rem !important;
+    }
+
+    /* Slider values & numbers in Sidebar */
+    section[data-testid="stSidebar"] [data-testid="stSliderTickBarMin"],
+    section[data-testid="stSidebar"] [data-testid="stSliderTickBarMax"],
+    section[data-testid="stSidebar"] div[data-testid="stThumbValue"],
+    section[data-testid="stSidebar"] [data-baseweb="slider"] div {
+        color: #F8FAFC !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Number input and Multiselect text in Sidebar */
+    section[data-testid="stSidebar"] input {
+        color: #FFFFFF !important;
     }
     
     /* Top Header Bar Container */
