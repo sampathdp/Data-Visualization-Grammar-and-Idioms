@@ -1,7 +1,4 @@
-"""
-High-Contrast Executive KPI Header Bar for Streamlit.
-Guarantees visible text, sharp contrast, and robust metric layout.
-"""
+
 
 import streamlit as st
 

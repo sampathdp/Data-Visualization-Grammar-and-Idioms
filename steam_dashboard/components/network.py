@@ -1,7 +1,4 @@
-"""
-High-Contrast Compact Sankey Diagram for Steam Market Intelligence.
-Guarantees 100% visible, crisp node and link text.
-"""
+
 
 import pandas as pd
 import plotly.graph_objects as go

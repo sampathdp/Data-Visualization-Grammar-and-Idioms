@@ -1,7 +1,3 @@
-"""
-Data Ingestion and Transformation Service for Steam Marketplace Visual System.
-Provides cached loading, rigorous type conversions, and exploded multi-grain dataframes.
-"""
 
 import os
 import re

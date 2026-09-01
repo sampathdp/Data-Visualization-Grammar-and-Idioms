@@ -1,7 +1,3 @@
-"""
-High-Contrast Academic Tableau Visualizations for Steam Market Intelligence.
-Guarantees 100% visible, crystal-clear labels, axes, legends, and ticks on all display modes.
-"""
 
 import numpy as np
 import pandas as pd

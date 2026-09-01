@@ -1,7 +1,3 @@
-"""
-Tableau-Style What-If Historical Scenario Simulator Component.
-Provides clean academic benchmarking against historical product cohorts.
-"""
 
 import sys
 import os

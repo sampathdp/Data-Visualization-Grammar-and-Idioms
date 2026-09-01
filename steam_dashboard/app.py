@@ -1,11 +1,4 @@
-"""
-Steam Visual Analytics Platform - Unified Academic Dashboard Suite
-Data Visualization Grammar and Idioms (DAS5002)
-Features:
-- Top Header Dashboard Switcher (Segmented Control / Instant 1-Click Toggle)
-- Dashboard 1: Exploratory Market Intelligence Explorer (Tableau 2x2 Single-Screen)
-- Dashboard 2: Explanatory Market Evolution Story (Tableau 2x2 Single-Screen with Treemap & Geospatial Map)
-"""
+
 
 import streamlit as st
 import pandas as pd

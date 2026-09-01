@@ -1,11 +1,4 @@
-"""
-Explanatory Storytelling Visual Components for Steam Market Intelligence.
-Features:
-1. Annotated Timeline (Supply Surge & Deregulation)
-2. Advanced Market Share Treemap (Hierarchical Space-Filling Idiom)
-3. The Small-Sample Rating Illusion (Log-Scale Evidence Plot)
-4. Geospatial Global Studio Hubs Map (Spatial / Choropleth Idiom)
-"""
+
 
 import numpy as np
 import pandas as pd

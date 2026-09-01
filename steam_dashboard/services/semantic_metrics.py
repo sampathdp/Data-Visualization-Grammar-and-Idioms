@@ -1,8 +1,3 @@
-"""
-Semantic Metrics Layer for Steam Market Intelligence Dashboards.
-Provides standardized, reusable business logic and metric formulas across all visual views.
-"""
-
 import numpy as np
 import pandas as pd
 
